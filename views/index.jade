@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(method="post",action="/chat")
+    div.selected_friends
+      div
+        input(type="submit",name="selected_friend",value="Bala")
+      div
+        input(type="submit",name="selected_friend",value="Tanuja")
+      div
+        input(type="submit",name="selected_friend",value="Hari")
+      div
+        input(type="submit",name="selected_friend",value="Shyam")
+      div
+        input(type="submit",name="selected_friend",value="Saroj")
+      div
+        input(type="submit",name="selected_friend",value="Vinay")
+      div
+        input(type="submit",name="selected_friend",value="Fayaz")
+  div(id="msgBox",style="height: 200px; width: 400px; border: 1px solid blue;")
+    p.selected_friend Choose a friend to chat
+    p.messages Past messages will be displayed here.
+    p.present_messages 
+  input(type="text",id="msg",style="width:300px")
+  input(type="submit",id="send",value="send")
+  script.
+    //- alert("hello sandhya");
+    $(".selected_friends div input").on("click",function(){
+      selected_friend = $(this).attr("value");
+      //- console.log(selected_friend);
+      alert("chat with "+ selected_friend);
+      $("p.selected_friend").html(selected_friend);
+    });
